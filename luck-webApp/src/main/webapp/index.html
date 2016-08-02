@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="/asset/js/angular-1.5.8.js"></script>
+</head>
+<body>
+
+	hello angularJS
+	<div ng-app="tableApp" ng-controller="tabelCtrl">
+		<table>
+		<th>id</th>
+		</th>名字</th>
+		<tr ng-repeat="x in names">
+			<td>{{x.id}}</td>
+			<td>{{x.name}}</td>
+		</tr>
+	</table>
+	</div>
+	
+</body>
+
+<script>
+	var tableApp = angular.module('tableApp', []);
+	tableApp.controller('tabelCtrl', function($scope, $http) {
+	    //$http.get("/asset/js/User.js").success(function (response) {$scope.names = response});
+	    var config = {
+	    		method:"GET",
+	    		url:"/asset/js/User.js",
+	    		transformRequest:function(){
+	    			console.log("request");
+	    		}
+	    }
+		$http(config).success(function (response) {$scope.names = response});
+	});
+
+</script>
+</html>

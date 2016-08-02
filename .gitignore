@@ -2,3 +2,5 @@
 *.prefs
 *.classpath
 test-output/
+*.settings
+target/
